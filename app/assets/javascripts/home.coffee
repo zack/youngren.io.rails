@@ -3,13 +3,19 @@ CHART_SIZE = 10
 generate_nums = (i) ->
   arr = []
   for n in [1..i]
-    arr.push(Math.random(CHART_SIZE))
-  arr.unshift 'data'
+    arr.push(Math.floor(Math.random()*10)+1)
+  arr.unshift('data')
+  arr
+
+update_nums = (chart) ->
+  arr = chart.data()[0].values
+  arr = (Math.max(0, (n.value + Math.floor(Math.random()*7-3))) for n in arr)
+  arr.unshift('data')
   arr
 
 @nums = generate_nums(CHART_SIZE)
 
-gen_chart = =>
+gen_chart = ->
   @chart = c3.generate
     data:
       columns:[ @nums ]
@@ -27,14 +33,14 @@ gen_chart = =>
         tick:
           count: 1
 
-run_update = =>
-  t = setInterval(update_chart, 35)
+run_update = (chart) =>
+  t = setInterval(update_chart, 60)
 
 update_chart = =>
   @chart.load
-    columns: [ generate_nums(CHART_SIZE) ]
+    columns: [ update_nums(@chart) ]
     transition:
-      duration: 35
+      duration: 0
 
 $ -> gen_chart()
 $ -> run_update()
