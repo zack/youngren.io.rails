@@ -1,4 +1,4 @@
-CHART_SIZE = 10
+CHART_SIZE = 100
 
 generate_nums = (i) ->
   arr = []
@@ -9,7 +9,8 @@ generate_nums = (i) ->
 
 update_nums = (chart) ->
   arr = chart.data()[0].values
-  arr = (Math.max(0, (n.value + Math.floor(Math.random()*7-3))) for n in arr)
+  seed = Math.random()*10
+  arr = (Math.max(0, (n.value + Math.floor(Math.random()*seed-seed/3))) for n in arr)
   arr.unshift('data')
   arr
 
@@ -32,15 +33,15 @@ gen_chart = ->
       y:
         tick:
           count: 1
+    transition:
+      duration: 0
 
 run_update = (chart) =>
-  t = setInterval(update_chart, 60)
+  t = setInterval(update_chart, 30)
 
 update_chart = =>
   @chart.load
     columns: [ update_nums(@chart) ]
-    transition:
-      duration: 0
 
 $ -> gen_chart()
 $ -> run_update()
