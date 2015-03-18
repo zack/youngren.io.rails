@@ -1,16 +1,12 @@
 CHART_SIZE = 100
 
 generate_nums = (i) ->
-  arr = []
-  for n in [1..i]
-    arr.push(Math.floor(Math.random()*10)+1)
+  arr = ((Math.floor(Math.random()*10)+1) for n in [1..i])
   arr.unshift('data')
   arr
 
 update_nums = (chart) ->
-  arr = chart.data()[0].values
-  seed = Math.random()*10
-  arr = (Math.max(0, (n.value + Math.floor(Math.random()*seed-seed/3))) for n in arr)
+  arr = (Math.floor(Math.random()*10+1) for n in chart.data()[0].values)
   arr.unshift('data')
   arr
 
