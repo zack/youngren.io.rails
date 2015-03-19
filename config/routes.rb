@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'index' => 'home#index'
   get 'games' => 'home#games'
   get 'chart' => 'home#chart'
+  get 'derby' => 'home#derby'
+
 end
