@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'c3-rails'
 gem 'd3_rails'
+gem 'gon'
+gem 'json'
 
 group :development, :test do
   gem 'byebug'
