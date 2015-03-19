@@ -1,3 +1,7 @@
+#= require jquery
+#= require c3
+#= require d3
+
 CHART_SIZE = 100
 
 generate_nums = (i) ->
