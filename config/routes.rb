@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get 'index' => 'home#index'
   get 'c3' => 'chart#c3test'
+  get 'games' => 'home#games'
 end
